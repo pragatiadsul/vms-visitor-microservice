@@ -106,7 +106,7 @@ public class VisitorController {
 		visitorService.updateVisitorById(visitor, id);
 	}
 
-	@RequestMapping("/welcome")
+	@GetMapping("/welcome")
 	public ModelAndView welcome() {
 		return new ModelAndView("welcome");
 	}
