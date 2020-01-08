@@ -51,8 +51,10 @@
    <td>${visitor.contactPersonEmail}</td>  
    <td>${visitor.reasonForVisit}</td>  
    <td>${visitor.contactPersonMobileNo}</td>  
-   <td><a href="/editstudent/${visitor.id}">Edit</a></td>  
-   <td><a href="/deletestudent/${visitor.id}">Delete</a></td>  
+  
+   
+   <td><a href="visitor/editVisitor/${visitor.id}">Edit</a></td>  
+                     <td><a href="visitor/deleteVisitor/${visitor.id}">Delete</a></td>  
    </tr>  
    </c:forEach> 
    

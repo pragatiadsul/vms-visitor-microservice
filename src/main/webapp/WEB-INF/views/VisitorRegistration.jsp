@@ -69,7 +69,20 @@
 			</div>
 		</div>
 		
-		
+		<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-3 control-lable"  for="idProofType" >IdProof Type</label>
+					<div class="col-md-7" >
+						<select name="idProofType"  style="max-width:100%;">
+							<option value="panCard">PAN Card</option>
+							<option value="aadharCard">Aadhar Card</option>
+							<option value="drivingLicence">Passport</option>
+							<option value="drivingLicence">Driving Licence</option>
+							<option value="other">Other</option>	
+						</select> <br> <br>
+					</div>
+				</div>
+			</div>
 		
 		<div class="row">
 			<div class="form-group col-md-12">
@@ -81,6 +94,31 @@
 			</div>
 		</div>
 		
+		
+		<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-3 control-lable"  for="visitorType" >Visitor Type</label>
+					<div class="col-md-7" >
+						<select name="visitorType"  style="max-width:100%;">
+							<option value="client">Client</option>
+							<option value="customer">Admin</option>
+							<option value="vender">Vender</option>
+							<option value="vender">Student</option>
+							<option value="other">Other</option>
+						</select> <br> <br>
+					</div>
+				</div>
+			</div>
+		
+	<div class="row">
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-lable" for="reasonForVisit">reasonForVisit</label>
+				<div class="col-md-7">
+					<form:input type="text" path="reasonForVisit" id="reasonForVisit" class="form-control input-sm"/>
+					
+				</div>
+			</div>
+		</div>
 		
 		<div class="row">
 			<div class="form-group col-md-12">
@@ -103,18 +141,6 @@
 			</div>
 		</div>
 		
-		
-		<div class="row">
-			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="reasonForVisit">reasonForVisit</label>
-				<div class="col-md-7">
-					<form:input type="text" path="reasonForVisit" id="reasonForVisit" class="form-control input-sm"/>
-					
-				</div>
-			</div>
-		</div>
-		
-		
 		<div class="row">
 			<div class="form-group col-md-12">
 				<label class="col-md-3 control-lable" for="contactPersonMobileNo">contactPersonMobileNo</label>
@@ -124,9 +150,7 @@
 				</div>
 			</div>
 		</div>
-
-
-
+		
 <div class="row">
 			<div class="form-actions floatRight">
 				<input type="submit" value="Register" class="btn btn-primary btn-sm">

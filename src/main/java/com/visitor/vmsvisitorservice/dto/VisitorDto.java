@@ -14,6 +14,7 @@ public class VisitorDto {
 
 	private String reasonForVisit;
 	private String contactPersonMobileNo;
+	private String visitorType;
 
 	private int status;
 
@@ -103,6 +104,14 @@ public class VisitorDto {
 
 	public void setContactPersonMobileNo(String contactPersonMobileNo) {
 		this.contactPersonMobileNo = contactPersonMobileNo;
+	}
+
+	public String getVisitorType() {
+		return visitorType;
+	}
+
+	public void setVisitorType(String visitorType) {
+		this.visitorType = visitorType;
 	}
 
 }

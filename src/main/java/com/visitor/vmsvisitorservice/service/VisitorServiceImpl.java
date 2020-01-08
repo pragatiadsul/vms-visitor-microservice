@@ -59,6 +59,7 @@ public class VisitorServiceImpl implements IVisitorService {
 		va.setMobileNo(visitorDto.getMobileNo());
 		va.setName(visitorDto.getName());
 		va.setReasonForVisit(visitorDto.getReasonForVisit());
+		va.setVisitorType(visitorDto.getVisitorType());
 		va.setContactPersonMobileNo(visitorDto.getContactPersonMobileNo());
 		visitorRepository.save(va);
 
@@ -77,6 +78,7 @@ public class VisitorServiceImpl implements IVisitorService {
 		va.setName(visitorDto.getName());
 		va.setReasonForVisit(visitorDto.getReasonForVisit());
 		va.setContactPersonMobileNo(visitorDto.getContactPersonMobileNo());
+		va.setVisitorType(visitorDto.getVisitorType());
 		visitorRepository.save(va);
 		return "Recored Added successfully";
 	}
@@ -87,4 +89,27 @@ public class VisitorServiceImpl implements IVisitorService {
 
 	}
 
+	@Override
+	public void deleteVisitorById(long id) {
+		visitorDao.deleteVisitorById(id);
+		
+	}
+
+	@Override
+	public void updateVisitor(Visitor v) {
+		// TODO Auto-generated method stub
+		visitorDao.updateVisitor(v);
+	}
+
+/*	@Override
+	public Visitor getVisitorById(long id) {
+		return visitorDao.getVisitorById(id);
+	}
+
+	@Override
+	public void update(Visitor visitor) {
+		visitorDao.update(visitor);
+		
+	}
+*/
 }

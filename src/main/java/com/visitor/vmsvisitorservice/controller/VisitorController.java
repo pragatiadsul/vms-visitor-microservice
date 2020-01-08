@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 //import com.visitor.vmsvisitorservice.dao.IVisitorDao;
 import com.visitor.vmsvisitorservice.dto.VisitorDto;
@@ -111,43 +113,112 @@ public class VisitorController {
 		return new ModelAndView("welcome");
 	}
 
+	
+	/**
+	 * Method used to delete Visitor by id using criteria builder
+	 * 
+	 * @param visitor object
+	 *
+	 */
+	@GetMapping("/deleteVisitorById/{id}")
+	public void deleteVisitorById(@PathVariable long id)
+	{
+		visitorService.deleteVisitorById(id);
+		
+	}
+	
 	/**
 	 * Method used to display enroll form
 	 * 
 	 * @param Visitor ModelMap
 	 * @return ModelAndView
 	 */
-	@RequestMapping(value = "/enroll", method = RequestMethod.GET)
+/*	@RequestMapping(value = "/enroll", method = RequestMethod.GET)
 	public ModelAndView newRegistration(ModelMap model) {
 		Visitor visitor = new Visitor();
 		model.addAttribute("visitor", visitor);
 		return new ModelAndView("enroll");
 	}
-
+*/
 	/**
 	 * Method used to save Visitor
 	 * 
 	 * @param Visitorobject
 	 * @return ModelAndView
 	 */
-	@PostMapping(value = "/save")
+/*	@PostMapping(value = "/save")
 	public ModelAndView saveRegistration(@Valid VisitorDto visitorDto, BindingResult result, ModelMap model,
 			RedirectAttributes redirectAttributes) {
 
 		visitorService.addVisitor(visitorDto);
 		return new ModelAndView("viewstudents");
 	}
-
+*/
 	/**
 	 * Method used to get registered Visitors list
 	 * 
 	 * @param No any parameter provided
 	 * @return List of registered Visitors
 	 */
-	@GetMapping("/viewstudents")
+	/* @GetMapping("/viewstudents")
 	public ModelAndView viewstudents() {
 		List<Visitor> list = visitorService.visitorsList();
 		return new ModelAndView("viewstudents", "list", list);
+	}
+*/
+
+	/**
+	 * Method used to display visitorRegistration form
+	 * 
+	 * @param Visitor ModelMap
+	 * @return ModelAndView VisitorRegistration page
+	 */
+	
+	@RequestMapping(value = "/visitorRegistration", method = RequestMethod.GET)
+	public ModelAndView newRegistration(ModelMap model) {
+		Visitor visitor = new Visitor();
+		model.addAttribute("visitor", visitor);
+		return new ModelAndView("VisitorRegistration");
+	}
+
+	/**
+	 * Method used to save Visitor
+	 * 
+	 * @param Visitorobject
+	 * @return ModelAndView VisitorList
+	 */
+	@PostMapping(value = "/save")
+	public ModelAndView saveRegistration(@Valid VisitorDto visitorDto, BindingResult result, ModelMap model,
+			RedirectAttributes redirectAttributes) {
+
+		visitorService.addVisitor(visitorDto);
+		List<Visitor> list = visitorService.visitorsList();
+		return new ModelAndView("VisitorList", "list", list);
+	}
+	
+	
+	@RequestMapping(value = "/deleteVisitor/{id}", method = RequestMethod.GET)
+	public ModelAndView deleteVisitor(@PathVariable long id) {
+		visitorService.deleteVisitorById(id);
+
+		List<Visitor> list = visitorService.visitorsList();
+		return new ModelAndView("VisitorList", "list", list);
+	}
+
+	@RequestMapping(value = "/editVisitor/{id}")
+	public ModelAndView edit(@PathVariable long id, ModelMap model) {
+		Visitor visitor = visitorService.getByVisitorId(id);
+		model.addAttribute("visitor", visitor);
+		return new ModelAndView("editVisitor");
+
+	}
+
+	@RequestMapping(value = "editVisitor/editsave")
+	public ModelAndView editsave( @ModelAttribute("visitor") Visitor v) {
+		 visitorService.updateVisitor(v);
+
+		List<Visitor> list = visitorService.visitorsList();
+		return new ModelAndView("VisitorList", "list", list);
 	}
 
 }

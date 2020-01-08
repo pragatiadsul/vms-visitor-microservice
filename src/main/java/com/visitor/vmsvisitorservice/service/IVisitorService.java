@@ -21,4 +21,14 @@ public interface IVisitorService {
 
 	void updateVisitorById(Visitor visitor, long id);
 
+	void deleteVisitorById(long id);
+
+	void updateVisitor(Visitor v);
+
+	//Visitor getStudentById(int id);
+
+	//Visitor getVisitorById(long id);
+
+	//void update(Visitor visitor);
+
 }

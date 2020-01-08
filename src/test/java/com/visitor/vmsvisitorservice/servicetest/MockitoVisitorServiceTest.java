@@ -73,12 +73,12 @@ class MockitoVisitorServiceTest {
 	/**
 	 * Method used to get VisitorsList
 	 */
-
+/*
 	@Test
 	void testVisitorsList() {
 		List<Visitor> list = new ArrayList<Visitor>();
-		Visitor visitorOne = new Visitor(1, "John", "pune", "howtodoinjava@gmail.com", "ekta", "9898989898",
-				"e@gmail.com", "9656457825", "4654352432", 0, "joining");
+//		Visitor visitorOne = new Visitor(1, "John", "pune", "howtodoinjava@gmail.com", "ekta", "9898989898",
+				"e@gmail.com", "9656457825", "4654352432", 0, "joining","sfrsd");
 		Visitor visitorTwo = new Visitor(2, "Alex", "mumbai", "alexk@yahoo.com", "ekta", "9898989898", "e@gmail.com",
 				"9685457825", "34TREB2431", 0, "joining");
 		Visitor visitorThree = new Visitor(3, "Steve", "benglore", "swaugh@gmail.com", "ekta", "9898989898",
@@ -96,7 +96,7 @@ class MockitoVisitorServiceTest {
 		assertEquals(3, visitorList.size());
 		verify(visitorDao, times(1)).visitorsList();
 	}
-
+*/
 	/**
 	 * Method used to add Visitor
 	 */
@@ -126,7 +126,7 @@ class MockitoVisitorServiceTest {
 	@Test
 	public void getVisitorByIdTest() {
 		when(visitorDao.findById(1)).thenReturn(new Visitor(1, "John", "pune", "John@gmail.com", "ekta", "9898989898",
-				"e@gmail.com", "9656457825", "4654352432", 0, "joining"));
+				"e@gmail.com", "9656457825", "4654352432", 0, "joining", "student"));
 
 		Visitor visitor = visitorService.getByVisitorId(1);
 

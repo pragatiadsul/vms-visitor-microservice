@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Predicate;
@@ -79,5 +80,54 @@ public class VisitorDaoImpl implements IVisitorDao {
 		entityManger.createQuery(update).executeUpdate();
 
 	}
+
+	@Override
+	public void deleteVisitorById(long id) {
+		 CriteriaBuilder cb = entityManger.getCriteriaBuilder();
+		 CriteriaDelete<Visitor> delete = cb.createCriteriaDelete(Visitor.class);
+		 Root<Visitor> user = delete.from(Visitor.class);
+		 delete.where(cb.equal(user.get("id"), id));
+		 entityManger.createQuery(delete).executeUpdate();
+		
+	}
+
+	@Override
+	public void updateVisitor(Visitor v) {
+		entityManger.merge(v);
+		
+	}
+
+//	@Override
+//	public Visitor getVisitorById(long id) {
+//		CriteriaBuilder cb = entityManger.getCriteriaBuilder();
+//		CriteriaQuery<Visitor> cq = cb.createQuery(Visitor.class);
+//		Root<Visitor> user = cq.from(Visitor.class);
+//		Predicate userIdPredicate = cb.equal(user.get("id"), id);
+//		cq.where(userIdPredicate);
+//		TypedQuery<Visitor> query = entityManger.createQuery(cq);
+//		return query.getSingleResult();
+//	}
+//
+//	@Override
+//	public void update(Visitor visitor) {
+//		CriteriaBuilder cb = entityManger.getCriteriaBuilder();
+//		CriteriaUpdate<Visitor> update = cb.createCriteriaUpdate(Visitor.class);
+//		Root<Visitor> user = update.from(Visitor.class);
+//
+//		update.set("address", visitor.getAddress());
+//		update.set("contactPersonEmail", visitor.getContactPersonEmail());
+//		update.set("contactPersonName", visitor.getContactPersonName());
+//		update.set("email", visitor.getEmail());
+//		update.set("idProof", visitor.getIdProof());
+//		update.set("mobileNo", visitor.getMobileNo());
+//		update.set("name", visitor.getName());
+//		update.set("reasonForVisit", visitor.getReasonForVisit());
+//		update.set("contactPersonMobileNo", visitor.getContactPersonMobileNo());
+//		update.set("id", visitor.getId());
+//	//	update.where(cb.equal(user.get("id"), Id));
+//		update.where(cb.equals(user.get("id"), Id))
+//		entityManger.createQuery(update).executeUpdate();
+//		
+//	}
 
 }

@@ -14,4 +14,12 @@ public interface IVisitorDao {
 
 	void updateVisitorById(Visitor visitor, long id);
 
+	void deleteVisitorById(long id);
+
+	void updateVisitor(Visitor v);
+
+	//Visitor getVisitorById(long id);
+
+	//void update(Visitor visitor);
+
 }
